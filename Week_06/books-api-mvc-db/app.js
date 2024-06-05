@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const sql = require("mssql");
 const dbConfig = require("./dbConfig");
 const booksController = require("./controllers/booksController");
-const usersController = require("./controllers/usersController")
+const usersController = require("./controllers/usersController");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -24,10 +24,11 @@ app.get("/books/:id", booksController.getBookById);
 
 
 // Routes (User)
-app.post("/users", usersController.createUser); //Create user
+app.post("/users", usersController.createUser); // Create user
 app.get("/users", usersController.getAllUsers); // Get all users
-app.get("/users/:id", usersController.getUserById); // Get user by ID
 app.get("/users/search", usersController.searchUsers); // Search user
+app.get("/users/with-books", usersController.getUsersWithBooks); // Get User with books
+app.get("/users/:id", usersController.getUserById); // Get user by ID
 app.put("/users/:id", usersController.updateUser); // Update user
 app.delete("/users/:id", usersController.deleteUser); // Delete user
 
